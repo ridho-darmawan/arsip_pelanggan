@@ -107,14 +107,12 @@ class pelanggan extends CI_Controller
 
 		$this->m_pelanggan->input_data($data, 'tb_pelanggan');
 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  Data Berhasil Ditambahkan
-</div>');
+  		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data Berhasil Ditambahkan</div>');
 		redirect('pelanggan/index');
 	}
+
 	public function do_download()
 	{
-
 		force_download('berkas', NULL);
 	}
 
@@ -126,7 +124,7 @@ class pelanggan extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">
   		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   		Data Berhasil Dihapus
-	</div>');
+		</div>');
 
 		redirect('pelanggan/index');
 	}
@@ -274,10 +272,24 @@ class pelanggan extends CI_Controller
 		$this->load->view('print_pelanggan', $data);
 	}
 
-	public function pdf()
+	public function cetak()
+	{
+		$this->load->view('templetes/header');
+		$this->load->view('templetes/sidebar');
+		$this->load->view('cetak_pdf');
+		$this->load->view('templetes/footer');
+	}
+
+	public function pdf_bulanan()
 	{
 		$this->load->library('dompdf_gen');
-		$data['pelanggan'] = $this->m_pelanggan->tampil_data('tb_pelanggan')->result();
+
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+
+
+		$data['pelanggan'] = $this->db->query("SELECT * FROM tb_pelanggan WHERE EXTRACT(MONTH FROM tanggal_permohonan) = '$bulan' AND EXTRACT(YEAR FROM tanggal_permohonan) = '$tahun' ORDER BY tanggal_permohonan DESC")->result();
+
 
 		$this->load->view('laporan_pdf', $data);
 
@@ -290,6 +302,46 @@ class pelanggan extends CI_Controller
 		$this->dompdf->render();
 		$this->dompdf->stream("laporan_pelanggan.pdf", array('Attachment' => 0));
 	}
+
+	public function pdf_tahunan()
+	{
+		$this->load->library('dompdf_gen');
+
+
+		$tahun = $this->input->post('tahun');
+
+
+		$data['pelanggan'] = $this->db->query("SELECT * FROM tb_pelanggan WHERE EXTRACT(YEAR FROM tanggal_permohonan) = '$tahun' ORDER BY tanggal_permohonan DESC")->result();
+
+
+		$this->load->view('laporan_pdf', $data);
+
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$this->dompdf->set_paper($paper_size, $orientation);
+
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("laporan_pelanggan.pdf", array('Attachment' => 0));
+	}
+
+	// public function pdf()
+	// {
+	// 	$this->load->library('dompdf_gen');
+	// 	$data['pelanggan'] = $this->m_pelanggan->tampil_data('tb_pelanggan')->result();
+
+	// 	$this->load->view('laporan_pdf', $data);
+
+	// 	$paper_size = 'A4';
+	// 	$orientation = 'landscape';
+	// 	$html = $this->output->get_output();
+	// 	$this->dompdf->set_paper($paper_size, $orientation);
+
+	// 	$this->dompdf->load_html($html);
+	// 	$this->dompdf->render();
+	// 	$this->dompdf->stream("laporan_pelanggan.pdf", array('Attachment' => 0));
+	// }
 
 
 	public function excel()

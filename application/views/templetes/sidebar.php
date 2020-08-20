@@ -34,8 +34,11 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="<?php echo base_url('pelanggan/pdf') ?>"><i class="fa fa-file-pdf-o"></i><span>Pdf</a></span>
+            <a href="<?php echo base_url('pelanggan/cetak') ?>"><i class="fa fa-file-pdf-o"></i><span>Pdf</a></span>
           </li>
+          <!-- <li>
+            <a href="<?php echo base_url('pelanggan/pdf') ?>"><i class="fa fa-file-pdf-o"></i><span>Pdf</a></span>
+          </li> -->
           <li>
             <a href="<?php echo base_url('pelanggan/excel') ?>"><i class="fa fa-file-excel-o"></i><span>Excel</a></span>
           </li>
