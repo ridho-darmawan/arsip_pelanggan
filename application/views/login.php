@@ -29,13 +29,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <style type="text/css">
-    .bg-login {
+    body {
       background-image: url(<?php echo base_url("assets/image/pln.png"); ?>);
       width: 100%;
       height: auto;
-      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
       background-size: cover;
-      margin: auto;
+
+    }
+
+    .login-box {
+      box-shadow: 0 0 8px 16px #efefef;
     }
 
     .logo {
@@ -48,8 +53,9 @@
 
 </head>
 
-<body class="bg-login">
-  <div class="login"></div>
+<body>
+
+
   <div class="login-box">
     <div class="login-logo">
       <img width="30%" src="<?php echo base_url() ?>assets/image/Logo_PLN.png">

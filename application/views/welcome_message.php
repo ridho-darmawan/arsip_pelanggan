@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,69 +18,95 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/iCheck/square/blue.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <style type="text/css">
-    .bg-login {
+    /* .bg-login {
       background-image: url(<?php echo base_url("assets/image/pln.png"); ?>);
       width: 100%;
       height: auto;
       position: relative;
       background-size: cover;
-      margin : auto;
-    }
+      margin: auto;
+    } */
+
     .logo {
-      
+
       color: #87CEEB;
       font-family: 'Marck Script', cursive;
       font-size: 25px;
-    }
-    .login-box-msg {
-      font-family: Georgia, serif;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    .login-box-msg {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .login-box-body {
+      opacity: 0.9;
+      box-shadow: 0 0 8px 16px #efefef;
+    }
+
+    body {
+      background-image: url(<?php echo base_url("assets/image/pln.png"); ?>);
+      background-repeat: no-repeat;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .login-box-body {
+      opacity: 0.9;
+    }
   </style>
 
 </head>
-<body class="bg-login">
-  <div class="hold-transition login-page"></div>
-<div class="login-box">
-  <div class="login-logo">
-    <img width="30%" src="<?php echo base_url() ?>assets/image/Logo_PLN.png">
-    <a href="login-box-msg"><h2>Selamat Datang di</h2></a>
-    <div class="logo"><b>E-Sysmail</b></div>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Ini adalah halaman utama</p>
-        <form>
-        <div id="login">
-        <div class="form-group has-feedback">
-        <div style="border: 1px inset #2a4aeb; text-align: center; "><a href="<?php echo site_url('auth/login'); ?>" >Login as Admin</a><br></div>
-      </div>
-      <div class="form-group has-feedback">
-        <div style="color: black; margin-bottom: 15px; text-align: center;">--OR--<br></div>
-        <div style="border: 1px inset #2a4aeb; text-align: center; "><a style="margin-top: 15px;" href="<?php echo site_url('user'); ?>">Login as User</a></div>
+
+<body>
+
+
+  <div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+
+      <img src="<?= base_url('assets/image/Logo_PLN.png') ?>" class="logo" width="100">
+      <p class="login-box-msg">Selamat Datang di <br> <b class="logo">E-Sysmail</b></p>
+
+      <button type="button" class="btn btn-block btn-success btn-flat"> <a style="color: white" href="<?php echo site_url('auth/login'); ?>">Login as Admin</a></button>
+
+      <div style="color: black; margin: 15px;  text-align: center;">--OR--</div>
+
+      <button type="button" class="btn btn-block btn-primary btn-flat"> <a style="color: white" href="<?php echo site_url('user'); ?>">Login as User</a></button>
+
     </div>
-
-
-        
-      </div>
-    </form>
+    <!-- /.login-box-body -->
   </div>
-  
-</div>
+  <!-- /.login-box -->
 
-<script src="<?=base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?=base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
+  <!-- jQuery 3 -->
+  <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+  <!-- iCheck -->
+  <script src="<?php echo base_url('assets/js/icheck.min.js') ?>"></script>
+  <script>
+    $(function() {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' /* optional */
+      });
+    });
+  </script>
+
 </body>
+
 </html>

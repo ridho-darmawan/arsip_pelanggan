@@ -34,7 +34,7 @@
                                     </span></br></br>
 
                                     <form method="post" action="<?= base_url('pelanggan/pdf_bulanan'); ?>" enctype="multipart/form-data" target='_blank1'>
-                                        <div style="margin-left: 170px ">
+                                        <div class="inputan" style="margin-left: 170px ">
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     <label>Pilih bulan</label>
@@ -82,7 +82,7 @@
                                     </span></br></br>
 
                                     <form method="post" action="<?= base_url('pelanggan/pdf_tahunan'); ?>" enctype="multipart/form-data" target='_blank1'>
-                                        <div style="margin-left: 330px ">
+                                        <div class="inputan" style="margin-left: 330px ">
 
 
                                             <div class="form-group">
@@ -127,10 +127,13 @@
 </div>
 
 
-<!-- <style type="text/css">
-    .content {
-        text-align: center;
-        background-color: white;
-        padding: 1px;
+<style type="text/css">
+    @media screen and (max-width: 576px) {
+
+        .inputan {
+
+            margin-left: 0 !important;
+        }
+
     }
-</style> -->
+</style>

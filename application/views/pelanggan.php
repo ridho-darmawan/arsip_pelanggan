@@ -1,68 +1,97 @@
 <title>Halaman Data Pelanggan</title>
+<!-- <style type="text/css">
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 120% !important;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+</style> -->
 <div class="content-wrapper">
-  <section class="content-header">
-    <h1>
-      Data Pelanggan Pasang Baru
-      <small></small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-      <li class="active">Data Pelanggan Pasang Baru</li>
-    </ol>
-  </section>
+  <div style="overflow-x:auto;">
+    <section class="content-header">
 
-  <section class="content">
-    <?php echo $this->session->flashdata('message'); ?>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>Tambah Data Pelanggan</button>
+      <h1>
+        Data Pelanggan Pasang Baru
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li class="active">Data Pelanggan Pasang Baru</li>
+      </ol>
+    </section>
+
+    <section class="content">
+
+      <?php echo $this->session->flashdata('message'); ?>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>Tambah Data Pelanggan</button>
 
 
 
-    <div class="navbar-form navbar-right">
-      <?php echo form_open('pelanggan/search') ?>
-      <input type="text" name="keyword" class="form-control" placeholder="search">
-      <button type="submit" class="btn btn-success">Cari</button>
+      <div class="navbar-form navbar-right">
+        <?php echo form_open('pelanggan/search') ?>
+        <input type="text" name="keyword" class="form-control" placeholder="search">
+        <button type="submit" class="btn btn-success">Cari</button>
 
-      <?php echo form_close() ?>
+        <?php echo form_close() ?>
 
-    </div>
-    <table class="table table-bordered table-striped">
-      <tr>
-        <th>NO</th>
-        <th>ID PELANGGAN</th>
-        <th>NOMOR AGENDA</th>
-        <th>TANGGAL PERMOHONAN</th>
-        <th>NAMA</th>
-        <th>TARIF</th>
-        <th>DAYA</th>
-        <th colspan="3">AKSI</th>
-      </tr>
-
-      <?php
-
-      $no = 1;
-
-      foreach ($pelanggan as $pln) : ?>
-        <tr>
-          <td><?php echo $no++ ?></td>
-          <td><?php echo $pln->Id_pelanggan ?></td>
-          <td><?php echo $pln->nomor_agenda ?></td>
-          <td><?php echo tgl($pln->tanggal_permohonan) ?></td>
-          <td><?php echo $pln->nama ?></td>
-          <td><?php echo $pln->tarif ?></td>
-          <td><?php echo $pln->daya ?></td>
-          <td><?php echo anchor('pelanggan/detail/' . $pln->Id, '<div class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></div>') ?></td>
-          <td onclick="javascript:return confirm('Anda yakin ingin menghapus?')"><?php echo anchor('pelanggan/hapus/' . $pln->Id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?></td>
-          <td><?php echo anchor('pelanggan/edit/' . $pln->Id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
-
-        </tr>
-      <?php endforeach; ?>
-    </table>
-    <div class="row">
-      <div class="col">
-
-        <?php echo $pagination; ?>
       </div>
+
+
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>ID PELANGGAN</th>
+            <th>NOMOR AGENDA</th>
+            <th>TANGGAL PERMOHONAN</th>
+            <th>NAMA</th>
+            <th>TARIF</th>
+            <th>DAYA</th>
+            <th colspan="3">AKSI</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <?php
+
+          $no = 1;
+
+          foreach ($pelanggan as $pln) : ?>
+            <tr>
+              <td><?php echo $no++ ?></td>
+              <td><?php echo $pln->Id_pelanggan ?></td>
+              <td><?php echo $pln->nomor_agenda ?></td>
+              <td><?php echo tgl($pln->tanggal_permohonan) ?></td>
+              <td><?php echo $pln->nama ?></td>
+              <td><?php echo $pln->tarif ?></td>
+              <td><?php echo $pln->daya ?></td>
+              <td><?php echo anchor('pelanggan/detail/' . $pln->Id, '<div class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></div>') ?></td>
+              <td onclick="javascript:return confirm('Anda yakin ingin menghapus?')"><?php echo anchor('pelanggan/hapus/' . $pln->Id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?></td>
+              <td><?php echo anchor('pelanggan/edit/' . $pln->Id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
+
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+      <?php echo $pagination; ?>
     </div>
+  </div>
 
   </section>
   <!-- Modal -->

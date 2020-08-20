@@ -8,10 +8,10 @@
     <div class="row">
 
       <div class="col-md-4">
-        <img src="<?= base_url() ?>assets/image/logo.png" alt="logo" width="200px" style="float:right">
+        <img src="<?= base_url() ?>assets/image/logo.png" alt="logo" width="200px" style="float:auto">
       </div>
       <div class="col-md-8">
-        <h2 style="float: left; margin-left:-50px; line-height:40px; margin-top:30px">Selamat Datang di Sistem Informasi Manajemen <br>Arsip Induk Langganan</h2>
+        <h2 style="float: left; line-height:40px; margin-top:30px;">Selamat Datang di Sistem Informasi Manajemen <br>Arsip Induk Langganan</h2>
       </div>
 
     </div>
@@ -105,6 +105,24 @@
 <!-- /.content -->
 
 <style type="text/css">
+  @media screen and (max-width: 576px) {
+
+    .quotes {
+      display: block;
+    }
+
+    .quotes img {
+      width: 410px !important;
+      margin: 10px 10px !important;
+
+    }
+
+    .quotes p {
+      font-size: 20px;
+      margin-top: 30px !important;
+    }
+  }
+
   .paragraf {
     text-align: center;
   }
@@ -126,7 +144,7 @@
 
   .quotes img {
     margin-top: 100px;
-    width: 30%;
+    width: 350px;
     box-shadow: 8px 4px #efefef;
     float: left;
     margin-left: 100px;
